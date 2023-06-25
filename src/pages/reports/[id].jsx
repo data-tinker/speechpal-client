@@ -10,6 +10,8 @@ export default function Report() {
 
   const [report, setReport] = useState(null);
   const [selectedEdit, setSelectedEdit] = useState(null);
+  const [isError, setIsError] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   const handleClick = (item) => {
     if (item.edit === selectedEdit) {
@@ -32,7 +34,12 @@ export default function Report() {
           setReport(response.data);
         })
         .catch((error) => {
-          console.error("Error fetching report:", error);
+          if (error.response && error.response.status === 404) {
+            setIsNotFound(true);
+          } else {
+            setIsError(true);
+            console.error('Error fetching report:', error);
+          }
         });
     }
   }, [id]);
@@ -64,6 +71,10 @@ export default function Report() {
                 {item.sentence}{' '}
               </span>))}
             </div>
+          ) : isError? (
+            <div>Failed to load</div>
+          ) : isNotFound? (
+            <div>Not found</div>
           ) : (
             <div>Loading...</div>
           )}
