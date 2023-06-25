@@ -1,9 +1,4 @@
-import Image from 'next/image'
-
 import { Container } from '@/components/Container'
-import backgroundImage from '@/images/background.jpg'
-import {Newsletter} from "@/components/Newsletter";
-
 
 export function AdditionalInformation() {
   return (

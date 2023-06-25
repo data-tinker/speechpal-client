@@ -11,7 +11,9 @@
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
     "@headlessui/react": "^1.7.13",
+    "@heroicons/react": "^2.0.18",
     "autoprefixer": "^10.4.12",
+    "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "focus-visible": "^5.2.0",
     "next": "13.4.2",
