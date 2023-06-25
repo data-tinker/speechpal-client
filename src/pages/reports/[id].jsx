@@ -29,7 +29,7 @@ export default function Report() {
 
   useEffect(() => {
     if (id) {
-      axios.get(`https://api.speechpal.com/api/reports/${id}`)
+      axios.get(`https://api.speechpal.co/api/reports/${id}`)
         .then((response) => {
           setReport(response.data);
         })
