@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import { XMarkIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid'
 
 export default function Report() {
   const router = useRouter();
@@ -12,6 +12,8 @@ export default function Report() {
   const [selectedEdit, setSelectedEdit] = useState(null);
   const [isError, setIsError] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
+  const [showErrorText, setShowErrorText] = useState(false);
+  const [showSuccessText, setShowSuccessText] = useState(false);
 
   const handleClick = (item) => {
     if (item.edit === selectedEdit) {
@@ -57,8 +59,40 @@ export default function Report() {
   return (
     <div className="bg-white px-6 py-32 lg:px-8">
       <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">Report</h2>
-        {/* Combine all the sentences into a sequential text */}
+        <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
+          Report
+          {report && (
+            report.has_errors ? (
+              <div className="inline-flex align-middle rounded-md ml-2">
+                <div className="flex-shrink-0 cursor-pointer"
+                     onMouseEnter={() => setShowErrorText(true)}
+                     onMouseLeave={() => setShowErrorText(false)}
+                >
+                  <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+                </div>
+                {showErrorText && (
+                  <div className="ml-2 flex-1 md:flex md:justify-between">
+                    <p className="text-sm text-red-800">Click underlined phrases below</p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="inline-flex align-middle rounded-md ml-2">
+                <div className="flex-shrink-0 cursor-pointer"
+                     onMouseEnter={() => setShowSuccessText(true)}
+                     onMouseLeave={() => setShowSuccessText(false)}
+                >
+                  <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
+                </div>
+                {showSuccessText && (
+                  <div className="ml-2 flex-1 md:flex md:justify-between">
+                    <p className="text-sm text-green-800">Well done, no errors</p>
+                  </div>
+                )}
+              </div>
+            )
+          )}
+        </h2>
         <div className="mt-6 leading-8">
           {report ? (
             <div>
