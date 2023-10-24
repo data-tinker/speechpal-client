@@ -2,7 +2,7 @@
 
 <a href="https://www.speechpal.co/"><img src="./speechpal-logo.png" width="250"/></a>
 
-This repository contains the frontend client for the [speechpal.co](https://www.speechpal.co/) service.
+This repository contains the frontend client for the [SpeechPal](https://www.speechpal.co/) service.
 
 ## 🚀 Running Locally
 
