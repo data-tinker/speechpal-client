@@ -17,6 +17,7 @@ Ensure you have Node.js and npm installed. If not, download and install them fro
 3. Open [http://localhost:3000](http://localhost:3000) in your browser to view the website
 
 ## ⚙️ Technologies used
-- [Tailwind CSS](https://tailwindcss.com/docs) 
 - [Next.js](https://nextjs.org/docs)
+- [ReactJS](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/docs) 
 - [Headless UI](https://headlessui.dev)
